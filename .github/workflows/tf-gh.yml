@@ -5,7 +5,14 @@ on:
 jobs:
   configure:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_ORGANIZATION: spacetme
     steps:
+      - name: Obtain a GitHub App Installation Access Token
+        run: |
+          TOKEN="$(npx obtain-github-app-installation-access-token ci ${{ secrets.GH_APP_CREDENTIALS_TOKEN }})"
+          echo "::add-mask::$TOKEN"
+          echo "GITHUB_TOKEN=$TOKEN" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
       - name: Terraform Init
