@@ -20,10 +20,10 @@ jobs:
       - name: Terraform Init
         run: terraform init
       - name: Terraform Validate
-        run: terraform validate -no-color
+        run: terraform validate
       - name: Terraform Plan
         if: github.ref != 'refs/heads/main'
-        run: terraform plan -no-color
+        run: terraform plan
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -no-color
+        run: terraform apply -auto-approve
