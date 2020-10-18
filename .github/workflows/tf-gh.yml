@@ -21,6 +21,8 @@ jobs:
         run: terraform init
       - name: Terraform Validate
         run: terraform validate
+      - name: Terraform Import
+        run: terraform import
       - name: Terraform Plan
         if: github.ref != 'refs/heads/main'
         run: terraform plan
