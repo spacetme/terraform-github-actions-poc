@@ -24,6 +24,5 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -no-color
       - name: Terraform Apply
-        if: github.ref == 'main'
-        run: terraform plan -no-color
-        continue-on-error: true
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply
