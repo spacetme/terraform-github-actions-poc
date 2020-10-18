@@ -8,7 +8,7 @@ resource "github_team" "some_team" {
 }
 
 resource "github_team_membership" "some_team_membership" {
-  team_id  = "${github_team.some_team.id}"
+  team_id  = github_team.some_team.id
   username = "dtinth-bot"
   role     = "member"
 }
