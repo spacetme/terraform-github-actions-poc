@@ -22,7 +22,8 @@ jobs:
       - name: Terraform Validate
         run: terraform validate -no-color
       - name: Terraform Plan
+        if: github.ref != 'refs/heads/main'
         run: terraform plan -no-color
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply
+        run: terraform apply -no-color
